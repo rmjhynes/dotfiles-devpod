@@ -26,5 +26,16 @@
         "vscode-icons-team.vscode-icons"
       ]
     }
+  },
+  "settings": {
+    "editor.cursorStyle": "block",
+    "editor.fontFamily": "MesloLGS NF",
+    "editor.rulers": [80],
+    "editor.wordWrap": "on",
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "workbench.colorTheme": "Dracula Theme",
+    "workbench.iconTheme": "vscode-icons"
   }
 }
