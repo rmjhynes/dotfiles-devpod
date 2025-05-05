@@ -1,8 +1,28 @@
 {
-    "name": "rmjhynes-devpod",
-    "image": "mcr.microsoft.com/devcontainers/base:debian",
-    "features": {
-      "ghcr.io/devcontainers/features/aws-cli:1": {},
-      "ghcr.io/devcontainers/features/nix:1": {}
+  "name": "rmjhynes-devpod",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {},
+    "ghcr.io/devcontainers/features/nix:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "AykutSarac.jsoncrack-vscode",
+        "dracula-theme.theme-dracula",
+        "eamodio.gitlens",
+        "github.vscode-github-actions",
+        "hashicorp.terraform",
+        "mechatroner.rainbow-csv",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "redhat.vscode-yaml",
+        "shd101wyy.markdown-preview-enhanced",
+        "timonwong.shellcheck",
+        "vscode-icons-team.vscode-icons"
+      ]
     }
+  }
 }
