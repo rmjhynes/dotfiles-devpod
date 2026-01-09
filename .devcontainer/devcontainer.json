@@ -3,13 +3,8 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/go:1": {},
-    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
-    "ghcr.io/devcontainers/features/nix:1": {
-      "packages": "act, argocd, bat, fastfetch, figlet, fzf, gh, gnupg, htop, jq, k3d, k9s, kind, kubeseal, lazygit, neovim, pinentry-tty, pre-commit, rclone, ripgrep, tlrc, tmux, vim, zoxide"
-    },
-    "ghcr.io/devcontainers/features/terraform:1": {}
+    "ghcr.io/devcontainers/features/nix:1": {}
   },
   "customizations": {
     "vscode": {
