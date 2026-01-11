@@ -1,6 +1,8 @@
 {
   "name": "rmjhynes-devpod",
   "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "workspaceFolder": "/home/vscode",
+  "workspaceMount": "source=devcontainer-repos-dir,target=/home/vscode/repos,type=volume",
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
