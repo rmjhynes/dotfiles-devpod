@@ -3,9 +3,12 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "workspaceFolder": "/home/vscode",
   "workspaceMount": "source=devcontainer-repos-dir,target=/home/vscode/repos,type=volume",
+  "mounts": [
+    "source=devcontainer-gnupg,target=/home/vscode/.gnupg,type=volume",
+    "source=devcontainer-ssh,target=/home/vscode/.ssh,type=volume"
+  ],
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
     "ghcr.io/devcontainers/features/go:1": {},
     "ghcr.io/devcontainers/features/nix:1": {}
   },
@@ -37,7 +40,7 @@
         ],
         "editor.wordWrap": "on",
         "files.autoSave": "afterDelay",
-        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrat  ed.defaultProfile.linux": "zsh",
         "terminal.integrated.fontFamily": "Hack Nerd Font",
         "workbench.colorTheme": "Dracula Theme",
         "workbench.iconTheme": "vscode-icons"
