@@ -25,5 +25,14 @@ To preserve data across container rebuilds, the following directories are mounte
 - `~/.gnupg` - GPG keys and configuration
 - `~/repos` - Project repositories
 
+## k3s Access
+To interact with k3s running on the host machine from inside the devcontainer:
+
+1. k3s is configured with the Docker bridge gateway as a TLS SAN — via the install script with this command: `sh /tmp/k3s-install.sh --tls-san {{ k3s_docker_bridge_gateway }}`.
+
+2. The devcontainer copies `~/.kube/config` to `~/.kube-devcontainer/config` and rewrites the server address from `127.0.0.1` to `172.17.0.1` (the Docker bridge gateway). The `KUBECONFIG` environment variable is set automatically via `remoteEnv`.
+
+3. The host's kubeconfig remains unchanged, so kubectl can still be used on the host if needed.
+
 ## VSCode Configuration
 Since I do still use VSCode for larger projects, I have configured the settings and declared the extensions that I like in the `.devcontainer/devcontainer.json` spec.
