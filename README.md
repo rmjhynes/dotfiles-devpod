@@ -15,9 +15,9 @@ devpod up . --dotfiles https://github.com/rmjhynes/dotfiles --dotfiles-script sc
 
 ## Features
 Dev containers have many [Features](https://containers.dev/features) available that you can use in place of packages. The following features are installed in my spec:
-- **aws-cli** - AWS Command Line Interface
-- **go** - Go programming language
-- **nix** - Nix package manager for additional packages as needed
+- `aws-cli` - AWS Command Line Interface
+- `go` - Go programming language
+- `nix` - Nix package manager for additional packages
 
 ## Persistent Storage
 To preserve data across container rebuilds, the following directories are mounted as Docker volumes:
@@ -28,7 +28,7 @@ To preserve data across container rebuilds, the following directories are mounte
 ## k3s Access
 To interact with k3s running on the host machine from inside the devcontainer:
 
-1. k3s is configured with the Docker bridge gateway as a TLS SAN — via the install script with this command: `sh /tmp/k3s-install.sh --tls-san {{ k3s_docker_bridge_gateway }}`.
+1. Configure k3s with the Docker bridge gateway as a TLS SAN via the k3s install script with this command: `sh /tmp/k3s-install.sh --tls-san 172.17.0.1`.
 
 2. The devcontainer copies `~/.kube/config` to `~/.kube-devcontainer/config` and rewrites the server address from `127.0.0.1` to `172.17.0.1` (the Docker bridge gateway). The `KUBECONFIG` environment variable is set automatically via `remoteEnv`.
 
