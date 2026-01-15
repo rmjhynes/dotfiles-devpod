@@ -12,16 +12,15 @@
   "postCreateCommand": {
     "fix-repos-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/repos",
     "fix-gnupg-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.gnupg",
-    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh",
-    "copy-kubeconfig-for-docker-bridge-gateway": "mkdir -p ~/.kube-devcontainer && sed 's/127.0.0.1/172.17.0.1/g' ~/.kube/config > ~/.kube-devcontainer/config"
-  },
-  "remoteEnv": {
-    "KUBECONFIG": "/home/vscode/.kube-devcontainer/config"
+    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh"
   },
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
     "ghcr.io/devcontainers/features/go:1": {},
-    "ghcr.io/devcontainers/features/nix:1": {}
+    "ghcr.io/devcontainers/features/nix:1": {},
+    "ghcr.io/microsoft/k3s-on-host": {
+      "cluster_enabled": "false"
+    }
   },
   "customizations": {
     "vscode": {
