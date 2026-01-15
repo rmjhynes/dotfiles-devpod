@@ -3,20 +3,16 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "workspaceFolder": "/home/vscode",
   "workspaceMount": "source=devcontainer-repos-dir,target=/home/vscode/repos,type=volume",
-  "initializeCommand": "mkdir -p ${localEnv:HOME}/.kube-devcontainer && sed 's/127.0.0.1/172.17.0.1/g' ${localEnv:HOME}/.kube/config > ${localEnv:HOME}/.kube-devcontainer/config",
   "mounts": [
     "source=devcontainer-gnupg-dir,target=/home/vscode/.gnupg,type=volume",
     "source=devcontainer-ssh-dir,target=/home/vscode/.ssh,type=volume",
-    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind",
-    "source=${localEnv:HOME}/.kube-devcontainer/config,target=/home/vscode/.kube/config,type=bind"
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig-host,type=bind"
   ],
   "postCreateCommand": {
     "fix-repos-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/repos",
     "fix-gnupg-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.gnupg",
-    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh"
-  },
-  "remoteEnv": {
-    "KUBECONFIG": "/home/vscode/.kube/config"
+    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh",
+    "setup-gitconfig": "sudo cat /home/vscode/.gitconfig-host > /home/vscode/.gitconfig && sudo chown vscode:vscode /home/vscode/.gitconfig"
   },
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
