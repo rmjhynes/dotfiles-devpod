@@ -3,18 +3,19 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "workspaceFolder": "/home/vscode",
   "workspaceMount": "source=devcontainer-repos-dir,target=/home/vscode/repos,type=volume",
+  "initializeCommand": "mkdir -p ~/.devpod-staging && cp ~/.gitconfig ~/.devpod-staging/gitconfig && sed 's/127.0.0.1/172.17.0.1/g' ~/.kube/config > ~/.devpod-staging/kubeconfig && chmod 644 ~/.devpod-staging/*",
   "mounts": [
     "source=devcontainer-gnupg-dir,target=/home/vscode/.gnupg,type=volume",
     "source=devcontainer-ssh-dir,target=/home/vscode/.ssh,type=volume",
-    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig-host,type=bind",
-    "source=${localEnv:HOME}/.kube/config,target=/home/vscode/.kube-host/config,type=bind"
+    "source=${localEnv:HOME}/.devpod-staging/gitconfig,target=/home/vscode/.gitconfig-host,type=bind",
+    "source=${localEnv:HOME}/.devpod-staging/kubeconfig,target=/home/vscode/.kube-host/config,type=bind"
   ],
   "postCreateCommand": {
     "fix-repos-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/repos",
     "fix-gnupg-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.gnupg",
     "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh",
-    "setup-gitconfig": "sudo cat /home/vscode/.gitconfig-host > /home/vscode/.gitconfig && sudo chown vscode:vscode /home/vscode/.gitconfig",
-    "setup-kubeconfig": "mkdir -p /home/vscode/.kube && sudo cat /home/vscode/.kube-host/config | sed 's/127.0.0.1/172.17.0.1/g' > /home/vscode/.kube/config && sudo chown -R vscode:vscode /home/vscode/.kube"
+    "setup-gitconfig": "cp /home/vscode/.gitconfig-host /home/vscode/.gitconfig",
+    "setup-kubeconfig": "mkdir -p /home/vscode/.kube && cp /home/vscode/.kube-host/config /home/vscode/.kube/config"
   },
   "remoteEnv": {
     "KUBECONFIG": "/home/vscode/.kube/config"
