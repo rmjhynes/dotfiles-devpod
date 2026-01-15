@@ -3,20 +3,20 @@
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "workspaceFolder": "/home/vscode",
   "workspaceMount": "source=devcontainer-repos-dir,target=/home/vscode/repos,type=volume",
+  "initializeCommand": "mkdir -p ${localEnv:HOME}/.kube-devcontainer && sed 's/127.0.0.1/172.17.0.1/g' ${localEnv:HOME}/.kube/config > ${localEnv:HOME}/.kube-devcontainer/config",
   "mounts": [
     "source=devcontainer-gnupg-dir,target=/home/vscode/.gnupg,type=volume",
     "source=devcontainer-ssh-dir,target=/home/vscode/.ssh,type=volume",
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind",
-    "source=${localEnv:HOME}/.kube,target=/home/vscode/.kube,type=bind"
+    "source=${localEnv:HOME}/.kube-devcontainer/config,target=/home/vscode/.kube/config,type=bind"
   ],
   "postCreateCommand": {
     "fix-repos-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/repos",
     "fix-gnupg-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.gnupg",
-    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh",
-    "copy-kubeconfig-for-docker-bridge-gateway": "sudo mkdir -p /home/vscode/.kube-devcontainer && sudo sed 's/127.0.0.1/172.17.0.1/g' /home/vscode/.kube/config > /tmp/kubeconfig && sudo mv /tmp/kubeconfig /home/vscode/.kube-devcontainer/config && sudo chown -R vscode:vscode /home/vscode/.kube-devcontainer"
+    "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh"
   },
   "remoteEnv": {
-    "KUBECONFIG": "/home/vscode/.kube-devcontainer/config"
+    "KUBECONFIG": "/home/vscode/.kube/config"
   },
   "features": {
     "ghcr.io/devcontainers/features/aws-cli:1": {},
