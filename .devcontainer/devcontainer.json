@@ -15,7 +15,7 @@
     "fix-gnupg-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.gnupg",
     "fix-ssh-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.ssh",
     "fix-kube-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/.kube-devcontainer",
-    "create-kubeconfig-for-docker-bridge": "sed 's/127.0.0.1/172.17.0.1/g' /home/vscode/.kube-devcontainer/config > /home/vscode/.kube-devcontainer/config"
+    "create-kubeconfig-for-docker-bridge": "sed -i 's/127.0.0.1/172.17.0.1/g' /home/vscode/.kube-devcontainer/config"
   },
   "remoteEnv": {
     "KUBECONFIG": "/home/vscode/.kube-devcontainer/config"
