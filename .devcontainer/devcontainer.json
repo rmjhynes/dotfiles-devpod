@@ -8,8 +8,7 @@
     "source=devcontainer-gnupg-dir,target=/home/vscode/.gnupg,type=volume",
     "source=devcontainer-ssh-dir,target=/home/vscode/.ssh,type=volume",
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind",
-    "source=/tmp/kube-devcontainer,target=/home/vscode/.kube-devcontainer,type=bind",
-    "source=devcontainer-kube-dir,target=/home/vscode/.kube-devcontainer,type=volume"
+    "source=/tmp/kube-devcontainer,target=/home/vscode/.kube-devcontainer,type=bind"
   ],
   "postCreateCommand": {
     "fix-repos-dir-ownership": "sudo chown -R vscode:vscode /home/vscode/repos",
